@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="direction: rtl;">
+    <a class="navbar-brand" href="#">LITU</a>
+    
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"> الرئيسية</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class ="container" align="left">
+        <%if(loggedIn){%>
+        <p>
+          <a href="/users/logout" style="color: black;" ><%=currentUser.name%> :مرحبا </a>
+        </p>
+        <%}else{%>
+          <a href="/users/login">تسجيل الدخول</a>
+        <%}%>
+    </div>

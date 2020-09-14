@@ -89,6 +89,13 @@ module.exports={
              next();
         });     
     },
+    
+    logout: (req, res, next) =>{
+        req.logout();
+        req.flash('success', 'تم تسجيل الخروج بنجاح');
+        res.locals.redirect = '/bugs';
+        next();
+    },
     restrictDev: (req, res, next) =>{
         if (req.isAuthenticated() && req.user.isDev) {
             next();
