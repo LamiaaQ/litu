@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 const User = require('../model/users');
+const passport = require('passport');
 
 module.exports={
     index: (req,res,next)=>{
         User.find({}).then((users)=>{
-
             res.locals.users = users;
              next();
 
         }).catch((error)=>{
-
             console.log(error);
         })
     },
@@ -24,23 +23,41 @@ module.exports={
     },
     
     create:(req,res,next)=>{
-        new User({
+        let newUser=new User({
             name:req.body.name,
             DOB:req.body.DOB,
             email:req.body.email,
             gender:true /* must be changed */
-        }).save()
-        res.locals.redirect = '/users';
-        next();
-        
+        })
+
+        User.register(newUser, req.body.password, (error, user) =>{
+    
+            if(user){
+                req.flash('success', 'تم حفظ البيانات بنجاح');
+                res.locals.redirect = '/users'; 
+            }else{
+                console.log(error)
+                req.flash('error', `الرجاء التحقق من البيانات`);
+                res.locals.redirect = '/users/new';  
+            }
+            next()
+        });  
     },
+    login:(req, res, next) =>{
+        res.render('users/login');
+    },
+    authenticate: passport.authenticate('local',{
+        failureRedirect: '/users/login',
+        failureFlash: 'الرجاء التحقق من بيانات الدخول',
+        successRedirect: '/users',
+        successFlash: 'تم تسجيل الدخول بنجاح'
+    }),
 
     edit:(req,res)=>{
         User.findById({_id:req.params.id}).then(user=>{
             res.locals.user = user;
             res.render('users/edit');
-        })
-       
+        })  
     },
 
     update:(req,res,next)=>{
@@ -71,6 +88,17 @@ module.exports={
             res.locals.redirect='/users';
              next();
         });     
+    },
+    restrictDev: (req, res, next) =>{
+        console.log('is authenticated?: ' + req.isAuthenticated()); 
+        if (req.isAuthenticated() && req.user.isDev) {
+            next();
+        }if (req.isAuthenticated() && !req.user.isDev) {
+            res.send('you are registered but not a developer')
+        }else{
+            req.flash('loginerror', 'عذراً! يجب أن تكون مطور للدخول الى الصفحة');
+            res.render('users/login');
+        }
     },
 
     redirectView:(req,res,next)=>{
