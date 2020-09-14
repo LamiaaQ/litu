@@ -9,12 +9,19 @@
         <label>Description:</label> <br>
         <textarea name="description" class="form-control"  cols="30" rows="10"></textarea>
       </div>
-
+      <label>priority:</label>
       <select class="form-control" name="priority">
         <option value="low">low</option>
         <option value="medium">medium</option>
         <option value="high">high</option>
-      </select>
+      </select> <br>
+
+      <label>project:</label>
+      <select class="form-control" name="programId">
+        <% programs.forEach(program=>{ %>
+        <option value="<%=program._id%>"><%=program.title%></option>
+        <% })%>
+      </select> <br>
 
       <div class="form-group">
         <label>image</label>

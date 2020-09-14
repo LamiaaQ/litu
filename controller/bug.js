@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Bug = require('../model/bug');
+const user = require('./user');
 
 module.exports={
     index: (req,res,next)=>{
@@ -30,7 +31,7 @@ module.exports={
             image:req.body.image,
             priority:req.body.priority,
             status:'open',
-            themeId:mongoose.Types.ObjectId(req.body.themeId)
+            issuedUserId:mongoose.Types.ObjectId(req.user._id)
         }).save()
         res.locals.redirect = '/bugs';
         next();

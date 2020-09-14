@@ -100,9 +100,16 @@ module.exports={
         if (req.isAuthenticated() && req.user.isDev) {
             next();
         }else if (req.isAuthenticated() && !req.user.isDev) {
-            res.send('you are registered but not a developer')
+            res.send('Error: your privilege does not allow you to access this page')/*or page not found*/
         }else{
             req.flash('loginerror', 'عذراً! يجب أن تكون مطور للدخول الى الصفحة');
+            res.render('users/login');
+        }
+    },
+    isAuth:(req,res,next)=>{
+        if(req.isAuthenticated()){
+            next()
+        }else{
             res.render('users/login');
         }
     },

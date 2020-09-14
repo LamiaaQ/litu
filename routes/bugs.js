@@ -1,12 +1,14 @@
 const router = require('express').Router();
 const BugController = require('../controller/bug');
+const UserController = require('../controller/user');
+const ProgramController = require('../controller/program');
 
 /* show all bugs */
-router.get('/',BugController.index,BugController.indexView);
+router.get('/',UserController.restrictDev,BugController.index,BugController.indexView);
 
 /* insert bug */
-router.get('/new',BugController.new);
-router.post('/create',BugController.create,BugController.redirectView);
+router.get('/new',UserController.restrictDev,ProgramController.index,BugController.new);
+router.post('/create',UserController.restrictDev,BugController.create,BugController.redirectView);
 
 /* updating bug info */
 router.get('/:id/edit',BugController.edit);
