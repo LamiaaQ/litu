@@ -1,0 +1,32 @@
+<div class="container" style="margin: 10%;">
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col-sm">title</th>
+            <th scope="col-sm">description</th>
+            <th scope="col-sm">priority</th>
+            <th scope="col-sm">status</th>
+            <th scope="col-sm">actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% bugs.forEach(bug=>{ %>
+          <tr>
+            <td><%=bug.title%></td>
+            <td><%=bug.description%></td>
+            <td><%=bug.priority%></td>
+            <td><%=bug.status%></td>
+            <td>
+                  <a class="dropdown-item" href="/bugs/<%= bug._id%>/edit">edit</a>
+                  <a class="dropdown-item" href="/bugs/<%= bug._id%>/delete?_method=delete">delete</a>
+                
+            </td>
+          </tr>
+            <% })%>
+        </tbody>
+      </table>
+    
+      <a href="/bugs/new"> ADD BUG</a>
+    
+    </div>
