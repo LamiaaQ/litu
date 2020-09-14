@@ -1,0 +1,35 @@
+<div class="container" style="margin: 10%;">
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col-sm">name</th>
+            <th scope="col-sm">DOB</th>
+            <th scope="col-sm">gender</th>
+            <th scope="col-sm">actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user=>{ %>
+          <tr>
+            <td><%=user.name%></td>
+            <td><%=user.DOB%></td>
+            <% if(user.gender&&user.gender){%>
+                <td>female</td>
+                <%} %>
+            <%if(!user.gender){%>
+                <td>male</td>
+                <%}%>
+            <td>
+                  <a class="dropdown-item" href="/users/<%= user._id%>/edit">edit</a>
+                  <a class="dropdown-item" href="/users/<%= user._id%>/delete?_method=delete">delete</a>
+                
+            </td>
+          </tr>
+            <% })%>
+        </tbody>
+      </table>
+    
+      <a href="/users/new"> ADD USER</a>
+    
+    </div>
