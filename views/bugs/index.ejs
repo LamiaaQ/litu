@@ -18,8 +18,9 @@
             <td><%=bug.priority%></td>
             <td><%=bug.status%></td>
             <td>
-                  <a class="dropdown-item" href="/bugs/<%= bug._id%>/edit">edit</a>
-                  <a class="dropdown-item" href="/bugs/<%= bug._id%>/delete?_method=delete">delete</a>
+                  <a class="dropdown-item" href="/bugs/<%= bug._id%>/show">عرض</a>
+                  <a class="dropdown-item" href="/bugs/<%= bug._id%>/edit">تعديل</a>
+                  <a class="dropdown-item" href="/bugs/<%= bug._id%>/delete?_method=delete">حذف</a>
                 
             </td>
           </tr>

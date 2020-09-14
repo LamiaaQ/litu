@@ -1,0 +1,10 @@
+  <div class="container" style="direction: rtl; text-align: right;">
+      
+    <h1><%=bug.title%></h1>
+    <img src="<%=bug.image%>">
+    <p>المستخدم: <%= bug.issuedUserId.name %></p>
+    <p>القسم: <%= bug.issuedUserId.department %></p>
+    <p>وصف المشكلة: <%= bug.description %></p>
+    <p>الخطورة: <%= bug.priority %></p>
+    <p>الحالة: <%= bug.status %></p>
+  </div>

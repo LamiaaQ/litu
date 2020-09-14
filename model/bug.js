@@ -11,7 +11,7 @@ UserSchema = new Schema({
         type: String,
         required: true,
     },
-    issuedUserId: mongoose.Types.ObjectId,
+    issuedUserId: { type: Schema.Types.ObjectId, ref: 'User'} , 
     image:String,
     priority:{
         type: String,

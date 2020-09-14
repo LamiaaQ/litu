@@ -1,3 +1,4 @@
+const { render } = require('ejs');
 const mongoose = require('mongoose');
 const Bug = require('../model/bug');
 
@@ -59,6 +60,28 @@ module.exports={
             console.log('Error Occured In Updating a bug info:'+error);
         })
     },
+
+    show:(req,res)=>{
+        Bug.findById({_id:req.params.id}).populate('issuedUserId').exec(function(err,bug){
+            if(err){
+                console.log(`error in show bug function: ${err}`);
+            }else{
+                console.log(bug)
+                res.locals.bug = bug;
+                res.render('bugs/show');
+            };
+        })
+    },
+
+    /*
+    search:(req,res)=>{
+        Bug.find({title:req.params.title}).then((bugs)=>{
+            res.locals.bugs = bugs;
+            res.render('bugs/search')
+        }).catch((error)=>{
+            console.log(error);
+        })
+    },*/
 
     delete: (req,res,next)=>{
         //console.log('delete Method');
