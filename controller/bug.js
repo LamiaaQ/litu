@@ -30,7 +30,7 @@ module.exports={
             description:req.body.description,
             image:req.body.image,
             priority:req.body.priority,
-            status:req.body.status,
+            status:'open',
             themeId:mongoose.Types.ObjectId(req.body.themeId)
         }).save()
         res.locals.redirect = '/bugs';
@@ -73,15 +73,17 @@ module.exports={
         })
     },
 
-    /*
+    searchForm:(req,res)=>{
+            res.render('bugs/search');
+    },
     search:(req,res)=>{
-        Bug.find({title:req.params.title}).then((bugs)=>{
+        Bug.find({title:req.body.title}).then((bugs)=>{
             res.locals.bugs = bugs;
-            res.render('bugs/search')
+            res.render('bugs/search');
         }).catch((error)=>{
             console.log(error);
         })
-    },*/
+    },
 
     delete: (req,res,next)=>{
         //console.log('delete Method');

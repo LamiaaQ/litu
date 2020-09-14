@@ -16,10 +16,9 @@ router.put('/:id/update',BugController.update,BugController.redirectView);
 router.get('/:id/show',BugController.show);
 
 /* search for a bug */
-/*
 router.get('/search',BugController.search);
 router.post('/search',BugController.search);
-*/
+
 
 
 

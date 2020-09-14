@@ -1,24 +1,30 @@
-<div class="container" style="direction: rtl; text-align: center;">
-    <form action="/search" method="POST">
-        <input type="text" name="title">
-        <button type="submit">يحث</button>
+<div class="container" style="direction: rtl; text-align: center; margin-top: 10%;">
+    <form action="/bugs/search" method="POST">
+        <input type="text" class="form-control"  name="title"> <br>
+        <button type="submit" class="btn btn-primary">بحث</button>
     </form>
-
     <% if(bugs){ %>
-    <p>
-        <% bugs.forEach(bug => { %>
-            
-                <div class="card border-dark mb-3" style="max-width: 18rem;">
-                    <div class="card-header"><%= bug.title %></div>
-                    <div class="card-body text-dark">
-                      <h5 class="card-title"><%= bug.status %></h5>
-                      <p class="card-text"><%= bug.description %></p>
-                    </div>
-                  </div>
+    
+        
+
+            <div class="container">
                 
-            
-            <% })%>
-    </p>
+                <div class="row">
+                    <% bugs.forEach(bug => { %>
+                  <div class="col-sm">
+                    
+                    <div class="card border-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header"><%= bug.title %></div>
+                        <div class="card-body text-dark">
+                        <h5 class="card-title"><%= bug.status %></h5>
+                        <p class="card-text"><%= bug.description %></p>
+                        </div>
+                    </div>
+
+                 </div>
+                 <% })%>
+                </div>
+            </div>
     <%}else{%>  <p>no data found</p> <%}%>
 
 
