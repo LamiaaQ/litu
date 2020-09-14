@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const connectflash = require('connect-flash');
 const router = require('./routes/index');
+const User = require('./model/users');
 
 /* express */
 app = express(); 
@@ -29,28 +30,28 @@ app.use(expressSession ({secret: 'leave it to us'}))
 
 
 /* Passport */
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-// passport.use(User.createStrategy());
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(connectflash());
 
 app.use((req , res , next) => {
     res.locals.flashMessages= req.flash(); 
-    // res.locals.loggedIn = req.isAuthenticated();
-    // res.locals.currentUser= req.user;
+    res.locals.loggedIn = req.isAuthenticated();
+    res.locals.currentUser= req.user;
     next();
 })
 
-// app.use((req,res,next)=>{
-//     if(req.session.user){
-//         console.log(req.session.user)
-//     }
-//     next()
-// })
+app.use((req,res,next)=>{
+    if(req.session.user){
+        console.log(req.session.user)
+    }
+    next()
+})
 app.use(methodOverride('_method',{methods:['POST','GET']}));
 
 app.use('/',router);
