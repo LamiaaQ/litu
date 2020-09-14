@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'),
 {Schema} = mongoose;
 
-UserSchema = new Schema({
+BugSchema = new Schema({
     title:{
         type: String,
         trim: true,
@@ -28,4 +28,4 @@ UserSchema = new Schema({
 },{timestamps: true});
 
 
-module.exports = mongoose.model('Bug', UserSchema);
+module.exports = mongoose.model('Bug', BugSchema);
