@@ -90,10 +90,9 @@ module.exports={
         });     
     },
     restrictDev: (req, res, next) =>{
-        console.log('is authenticated?: ' + req.isAuthenticated()); 
         if (req.isAuthenticated() && req.user.isDev) {
             next();
-        }if (req.isAuthenticated() && !req.user.isDev) {
+        }else if (req.isAuthenticated() && !req.user.isDev) {
             res.send('you are registered but not a developer')
         }else{
             req.flash('loginerror', 'عذراً! يجب أن تكون مطور للدخول الى الصفحة');
