@@ -1,9 +1,9 @@
 const mongoose = require('mongoose'),
+{Schema} = mongoose;
 
 ProgramSchema = new Schema({
     title:{
         type: String,
-        trim: true,
         required: true
     },
     description:{

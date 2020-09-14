@@ -1,4 +1,3 @@
-const { render } = require('ejs');
 const mongoose = require('mongoose');
 const Bug = require('../model/bug');
 
@@ -50,7 +49,7 @@ module.exports={
         Bug.updateOne({_id: mongoose.Types.ObjectId(req.params.id)},{
             title: req.body.title,
             description: req.body.description,
-            priority:req.body.priority,
+            priority:req.body.priority
         }).then(
             ()=>{
               res.locals.redirect = '/bugs';

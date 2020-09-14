@@ -1,0 +1,29 @@
+<div class="container" style="margin-top: 10%;">
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col-sm">title</th>
+            <th scope="col-sm">description</th>
+            <th scope="col-sm">actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% programs.forEach(program=>{ %>
+          <tr>
+            <td><%=program.title%></td>
+            <td><%=program.description%></td>
+            <td>
+                  <a class="dropdown-item" href="/programs/<%= program._id%>/show">عرض</a>
+                  <a class="dropdown-item" href="/programs/<%= program._id%>/edit">تعديل</a>
+                  <a class="dropdown-item" href="/programs/<%= program._id%>/delete?_method=delete">حذف</a>
+                
+            </td>
+          </tr>
+            <% })%>
+        </tbody>
+      </table>
+    
+      <a href="/programs/new"> ADD Program</a>
+    
+    </div>

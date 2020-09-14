@@ -1,0 +1,15 @@
+<form action="/programs/<%=program._id%>/update?_method=PUT" method="post">
+
+    <div class="form-group">
+        <label>Title: </label>
+        <input type="text" class="form-control" name="title" value="<%=program.title%>">
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea name="description" class="form-control" cols="30" rows="10"><%=program.description%></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
