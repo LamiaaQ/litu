@@ -26,8 +26,9 @@ module.exports={
     create:(req,res,next)=>{
         new User({
             name:req.body.name,
-            age:req.body.age,
-            gender:true
+            DOB:req.body.DOB,
+            email:req.body.email,
+            gender:true /* must be changed */
         }).save()
         res.locals.redirect = '/users';
         next();
@@ -45,7 +46,8 @@ module.exports={
     update:(req,res,next)=>{
         User.updateOne({_id: mongoose.Types.ObjectId(req.params.id)},{
             name: req.body.name,
-            age: req.body.age
+            email: req.body.email,
+            DOB:req.body.DOB,
         }).then(
             ()=>{
               res.locals.redirect = '/users';

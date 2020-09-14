@@ -9,16 +9,11 @@ UserSchema = new Schema({
         trim: true,
         required: true
     },
-    DOB:{
-        type:Date,
-        required:true
-    },
+    DOB:Date,
     gender: Boolean,
     email:{
         type: String,
         required: true,
-        lowercase: true,
-        unique: true
     },
     department:String,
     isDev:Boolean
