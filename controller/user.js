@@ -28,14 +28,15 @@ module.exports={
             name:req.body.name,
             DOB:req.body.DOB,
             email:req.body.email,
-            gender:true /* must be changed */
+            gender: req.body.gender,
+            department:req.body.department
         })
 
         User.register(newUser, req.body.password, (error, user) =>{
     
             if(user){
                 req.flash('success', 'تم حفظ البيانات بنجاح');
-                res.locals.redirect = '/users'; // res.redner('users/show') -> show will print all session user info
+                res.locals.redirect = '/users'; 
             }else{
                 console.log(error)
                 req.flash('error', `الرجاء التحقق من البيانات`);

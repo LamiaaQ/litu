@@ -2,13 +2,23 @@
     <div class="row">
         <div class="col">
             <div class="card" style="width: 50%;">
-                <div class="card-body">
+                <div class="card-body" style="text-align: right;" >
                 <%if(loggedIn){%>
                 <p>
-                    <%=currentUser.name%> <br>
-                    <%=currentUser.DOB%> <br>
-                    <%=currentUser.email%> <br>
+                   <p> الإسم:  <%=currentUser.name%>  </p><br>
+                   <p> تاريخ الميلاد :  <%=currentUser.DOB.toDateString()%></p> <br>
+                   <p> البريد الإلكتروني :  <%=currentUser.email%> </p><br>
+                   <p> القسم :  <%=currentUser.department%></p> <br>
+                   <p> الجنس :  
+                    <% if(currentUser.gender){%>
+                        أنثى
+                        <%} %>
+                    <%if(!currentUser.gender){%>
+                        ذكر
+                        <%}%></p>
                 </p>
+
+                <a class="btn btn-primary" href="/users/<%= currentUser._id%>/edit">تعديل</a>
                 <%}else{%>
                 sign in firt to see your profile
                 <%}%>
