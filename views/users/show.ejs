@@ -1,11 +1,19 @@
-<div class ="container" align="left">
-    <%if(loggedIn){%>
-    <p>
-        <%=currentUser.name%>
-        <%=currentUser.DOB%>
-        <%=currentUser.email%>
-    </p>
-    <%}else{%>
-      sign in firt to see your profile
-    <%}%>
+<div class ="container" align="center">
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 50%;">
+                <div class="card-body">
+                <%if(loggedIn){%>
+                <p>
+                    <%=currentUser.name%> <br>
+                    <%=currentUser.DOB%> <br>
+                    <%=currentUser.email%> <br>
+                </p>
+                <%}else{%>
+                sign in firt to see your profile
+                <%}%>
+                </div>
+            </div>     
+         </div>
+    </div>
 </div>
