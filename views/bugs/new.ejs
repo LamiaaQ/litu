@@ -1,22 +1,22 @@
 <form action="/bugs/create" method="post">
-
+<div style="text-align: right;">
     <div class="form-group">
-        <label>title: </label>
-        <input type="text" class="form-control" name="title" placeholder="insert the bug title">
+        <label>العنوان </label>
+        <input type="text" class="form-control" name="title" placeholder="أدخل عنوان المشكلة">
       </div>
 
       <div class="form-group">
-        <label>Description:</label> <br>
-        <textarea name="description" class="form-control"  cols="30" rows="10"></textarea>
+        <label>الوصف</label> <br>
+        <textarea name="description" placeholder="أدخل وصف المشكلة" class="form-control"  cols="30" rows="10"></textarea>
       </div>
-      <label>priority:</label>
+      <label>الأولوية</label>
       <select class="form-control" name="priority">
-        <option value="low">low</option>
-        <option value="medium">medium</option>
-        <option value="high">high</option>
+        <option value="low">قليلة</option>
+        <option value="medium">متوسطة</option>
+        <option value="high">عالية</option>
       </select> <br>
 
-      <label>project:</label>
+      <label>المشروع</label>
       <select class="form-control" name="project">
         <% programs.forEach(program=>{ %>
         <option value="<%=program._id%>"><%=program.title%></option>
@@ -24,8 +24,9 @@
       </select> <br>
 
       <div class="form-group">
-        <label>image</label>
-        <input type="text" class="form-control" name="image">
+        <label>صورة</label>
+        <input type="text" placeholder="أرفق رابط صورة إن وجد" class="form-control" name="image">
+      </div>
       </div>
       
       <button type="submit" class="btn btn-primary">Submit</button>

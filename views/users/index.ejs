@@ -1,6 +1,6 @@
 <div class="container" style="margin-top: 10%;">
 
-  <a class="btn btn-primary" href="/users/new"> إضافة مستخدم</a> <br><br>
+  <a class="btn btn-primary" href="/users/new"> إضافة مستخدم</a> <br> <br>
   
     <table class="table">
         <thead>
@@ -17,14 +17,14 @@
             <td><%=user.name%></td>
             <td><%=user.DOB.toDateString()%></td>
             <% if(user.gender&&user.gender){%>
-                <td>female</td>
+                <td>أنثى</td>
                 <%} %>
             <%if(!user.gender){%>
-                <td>male</td>
+                <td>ذكر</td>
                 <%}%>
-            <td>
-                  <a class="dropdown-item" href="/users/<%= user._id%>/edit">تعديل</a>
-                  <a class="dropdown-item" href="/users/<%= user._id%>/delete?_method=delete">حذف</a>
+            <td class="text-center">
+                  <a style = "text-decoration:none;" class ="btn btn-light btn-sm" href="/users/<%= user._id%>/edit">تعديل</a>
+                  <a style = "text-decoration:none;" class ="btn btn-light btn-sm" href="/users/<%= user._id%>/delete?_method=delete">حذف</a>
                 
             </td>
           </tr>
