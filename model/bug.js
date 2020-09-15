@@ -22,7 +22,7 @@ BugSchema = new Schema({
         required:true
     },
     devId:mongoose.Types.ObjectId,
-    programId:mongoose.Types.ObjectId,
+    programId:{ type: Schema.Types.ObjectId, ref: 'Program'},
     closedDate:Date
     
 },{timestamps: true});

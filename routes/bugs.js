@@ -32,6 +32,8 @@ router.get('/:status',UserController.restrictDev,BugController.showfilteredBugs,
 /* search for bug assigned to the dev*/
 router.get('/assigned',UserController.restrictDev,BugController.assignedToMe,BugController.indexView);
 
+/*  find bug issued by specific user*/
+router.get('/issuedBy/:id',UserController.restrictDev,BugController.issuedBy,BugController.indexView);
 
 /* deleting bug */
 router.delete('/:id/delete',BugController.delete,BugController.redirectView);

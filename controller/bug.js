@@ -56,6 +56,7 @@ module.exports={
             priority:req.body.priority
         }).then(
             ()=>{
+                req.flash('success','تم تحديث تقرير المشكلة')
               res.locals.redirect = '/bugs';
               next();  
             }
@@ -65,7 +66,7 @@ module.exports={
     },
 
     show:(req,res)=>{
-        Bug.findById({_id:req.params.id}).populate('issuedUserId').exec(function(err,bug){
+        Bug.findById({_id:req.params.id}).populate('issuedUserId').populate('programId').exec(function(err,bug){
             if(err){
                 console.log(`error in show bug function: ${err}`);
             }else{
@@ -126,8 +127,14 @@ module.exports={
             console.log(error);
         })
     },
-
-
+    issuedBy: (req,res,next)=>{
+        Bug.find({issuedUserId: mongoose.Types.ObjectId(req.params.id)}).then((bugs)=>{
+            res.locals.bugs = bugs;
+             next();
+        }).catch((error)=>{
+            console.log(error);
+        })
+    },
     searchForm:(req,res)=>{
             res.render('bugs/search');
     },

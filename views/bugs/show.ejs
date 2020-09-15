@@ -8,10 +8,12 @@
                     <img src="<%=bug.image%>">
                       <div style="text-align: right;">
                         <p>المستخدم: <%= bug.issuedUserId.name %></p>
+                        <p>البريد الإلكتروني: <%= bug.issuedUserId.email %></p>
                         <p>القسم: <%= bug.issuedUserId.department %></p>
                         <p>وصف المشكلة: <%= bug.description %></p>
                         <p>الخطورة: <%= bug.priority %></p>
                         <p>الحالة: <%= bug.status %></p>
+                        <p>البرنامج: <%= bug.programId.title %></p>
                     </div>
 
                     <a class="btn btn-primary" href="/bugs/<%= bug._id%>/close">إغلاق المشكلة</a>

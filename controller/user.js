@@ -106,7 +106,7 @@ module.exports={
         }else if (req.isAuthenticated() && !req.user.isDev) {
             res.send('Error: your privilege does not allow you to access this page')/*or page not found*/
         }else{
-            req.flash('loginerror', 'عذراً! يجب أن تكون مطور للدخول الى الصفحة');
+            req.flash('loginerror', 'عذراً! يجب عليك تسجيل الدخول  ');
             res.render('users/login');
         }
     },
