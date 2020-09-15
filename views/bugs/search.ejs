@@ -1,8 +1,17 @@
 <div class="container" style="direction: rtl; text-align: center; margin-top: 10%;">
-    <form action="/bugs/search" method="POST">
-        <input type="text" class="form-control"  name="title"> <br>
-        <button type="submit" class="btn btn-primary">بحث</button>
-    </form>
+    
+    <div class="row justify-content-center" align="center">
+        <div class="col-md-6">
+            <form action="/bugs/search" method="POST">
+                <input type="text" class="form-control"  name="title"> <br>
+                <div class="col-auto">
+                <button type="submit" class="btn btn-primary">بحث</button>
+            </div>
+            </form>
+        </div>
+
+    </div>
+    
 
     <% if(bugs){ %>
     
