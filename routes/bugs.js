@@ -17,6 +17,11 @@ router.put('/:id/update',BugController.update,BugController.redirectView);
 /* show bug report*/
 router.get('/:id/show',BugController.show);
 
+/* closing a bug report*/
+router.get('/:id/close',BugController.closeBug,BugController.redirectView);
+/* assigning a bug */
+router.get('/:id/assign',BugController.assignBug,BugController.redirectView);
+
 /* search for a bug */
 router.get('/search',BugController.search);
 router.post('/search',BugController.search);

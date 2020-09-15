@@ -1,4 +1,4 @@
-  <div class="container" style="direction: rtl; text-align: right;">
+  <div class="container" style="direction: rtl; text-align: right;" align="center">
       
     <h1><%=bug.title%></h1>
     <img src="<%=bug.image%>">
@@ -7,4 +7,8 @@
     <p>وصف المشكلة: <%= bug.description %></p>
     <p>الخطورة: <%= bug.priority %></p>
     <p>الحالة: <%= bug.status %></p>
+
+
+    <a class="btn btn-primary" href="/bugs/<%= bug._id%>/close">إغلاق المشكلة</a>
+    <a class="btn btn-primary" href="/bugs/<%= bug._id%>/assign">إسناد</a>
   </div>

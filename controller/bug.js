@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Bug = require('../model/bug');
-const program = require('./program');
-const user = require('./user');
+// const program = require('./program');
+// const user = require('./user');
 
 module.exports={
     index: (req,res,next)=>{
@@ -18,7 +18,6 @@ module.exports={
 
     indexView:(req,res)=>{
         res.render('bugs/index');
-        //res.send('hi users');
     },
 
     new: (req,res)=>{
@@ -69,10 +68,41 @@ module.exports={
             if(err){
                 console.log(`error in show bug function: ${err}`);
             }else{
-                console.log(bug)
                 res.locals.bug = bug;
                 res.render('bugs/show');
             };
+        })
+    },
+    closeBug:(req,res,next)=>{
+
+        Bug.updateOne({_id: mongoose.Types.ObjectId(req.params.id)},{
+            status: 'closed',
+            devId: req.user._id,
+            closedDate: new Date()
+        }).then(
+            ()=>{
+                req.flash('success','تم إغلاق المشكلة بنجاح')
+                res.locals.redirect ='/bugs';
+              next();  
+            }
+        ).catch(error=>{
+            console.log(`Error Occured In assigned bug: ${error}`);
+        })
+    },
+
+    assignBug:(req,res,next)=>{
+
+        Bug.updateOne({_id: mongoose.Types.ObjectId(req.params.id)},{
+            status: 'assigned',
+            devId: req.user._id
+        }).then(
+            ()=>{
+                req.flash('success','تم حجز المشكلة بنجاح')
+                res.locals.redirect ='/bugs';
+              next();  
+            }
+        ).catch(error=>{
+            console.log('Error Occured In closing a bug:'+error);
         })
     },
 
