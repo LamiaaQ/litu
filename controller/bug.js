@@ -106,17 +106,17 @@ module.exports={
             console.log('Error Occured In closing a bug:'+error);
         })
     },
-    // showfilteredBugs: (req,res,next)=>{
-    //     Bug.find({status:req.params.status}).then((bugs)=>{
+    showfilteredBugs: (req,res,next)=>{
+        Bug.find({status:req.params.status}).then((bugs)=>{
 
-    //         res.locals.bugs = bugs;
-    //          next();
+            res.locals.bugs = bugs;
+             next();
 
-    //     }).catch((error)=>{
+        }).catch((error)=>{
 
-    //         console.log(error);
-    //     })
-    // },
+            console.log(error);
+        })
+    },
 
     searchForm:(req,res)=>{
             res.render('bugs/search');

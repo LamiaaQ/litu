@@ -26,8 +26,8 @@ router.get('/:id/assign',BugController.assignBug,BugController.redirectView);
 router.get('/search',BugController.search);
 router.post('/search',BugController.search);
 
-// /* filter bugs*/
-// router.get('/:status',UserController.restrictDev,BugController.showfilteredBugs,BugController.indexView);
+/* filter bugs*/
+router.get('/:status',UserController.restrictDev,BugController.showfilteredBugs,BugController.indexView);
 
 /* deleting bug */
 router.delete('/:id/delete',BugController.delete,BugController.redirectView);
