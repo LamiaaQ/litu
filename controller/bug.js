@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Bug = require('../model/bug');
+const program = require('./program');
 const user = require('./user');
 
 module.exports={
@@ -25,13 +26,15 @@ module.exports={
     },
     
     create:(req,res,next)=>{
+        
         new Bug({
             title:req.body.title,
             description:req.body.description,
             image:req.body.image,
             priority:req.body.priority,
             status:'open',
-            issuedUserId:mongoose.Types.ObjectId(req.user._id)
+            issuedUserId:mongoose.Types.ObjectId(req.user._id),
+            programId:mongoose.Types.ObjectId(req.body.project)
         }).save()
         res.locals.redirect = '/bugs';
         next();

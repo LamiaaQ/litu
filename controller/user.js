@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('../model/users');
+const { body, validationResult } = require('express-validator');
 const passport = require('passport');
 
 module.exports={
@@ -113,7 +114,27 @@ module.exports={
             res.render('users/login');
         }
     },
+    inputValidation: (req, res, next) =>{
 
+        if(body('name').isLength({min:2,max:25})
+        &&body('email').isEmail()
+        &&body('password').isLength({min:6})){
+            next();
+        }else{
+            req.flash('error','تحقق من البيانات المدخلة')
+            res.send('data invalid');
+        }
+    },
+    validator:(req,res,next)=>{
+        
+        const error= validationResult(req)
+        if(!error.isEmpty()){           
+             res.json({error:error.array()})     
+        }else{
+            next();
+        }
+        
+    }, 
     redirectView:(req,res,next)=>{
         let redirectPath = res.locals.redirect;
         if(redirectPath){ res.redirect(redirectPath); 

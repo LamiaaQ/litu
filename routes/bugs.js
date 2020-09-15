@@ -7,8 +7,8 @@ const ProgramController = require('../controller/program');
 router.get('/',UserController.restrictDev,BugController.index,BugController.indexView);
 
 /* insert bug */
-router.get('/new',UserController.restrictDev,ProgramController.index,BugController.new);
-router.post('/create',UserController.restrictDev,BugController.create,BugController.redirectView);
+router.get('/new',UserController.isAuth,ProgramController.index,BugController.new);
+router.post('/create',UserController.isAuth,BugController.create,BugController.redirectView);
 
 /* updating bug info */
 router.get('/:id/edit',BugController.edit);
