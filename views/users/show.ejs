@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col">
             <div class="card" style="width: 50%;">
-                <div class="card-body" style="text-align: right;" >
+                <div class="card-body" >
+                    <div style="text-align: right;">
                 <%if(loggedIn){%>
                 <p>
                    <p> الإسم:  <%=currentUser.name%>  </p><br>
@@ -17,8 +18,11 @@
                         ذكر
                         <%}%></p>
                 </p>
+            </div>
+            <div style="text-align: left;">
 
-                <a class="btn btn-primary" href="/users/<%= currentUser._id%>/edit">تعديل</a>
+                <a class="btn btn-primary" href="/users/<%= currentUser._id%>/edit">تحديث</a>
+            </div>
                 <%}else{%>
                 sign in firt to see your profile
                 <%}%>

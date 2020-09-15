@@ -70,13 +70,19 @@ module.exports={
             name: req.body.name,
             email: req.body.email,
             DOB:req.body.DOB,
+            gender: req.body.gender,
+            department:req.body.department
         }).then(
             ()=>{
-              res.locals.redirect = '/users';
+              req.flash('success','تم تحديث المعلومات الشخصية ')
+              res.locals.redirect = '/users/show';
               next();  
             }
         ).catch(error=>{
-            console.log('Error Occured');
+            req.flash('error','لم تتم عملية التحديث');
+            console.log(`Error Occured ${error}`);
+            res.locals.redirect = '/users/show';
+              next(); 
         })
     },
 
