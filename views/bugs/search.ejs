@@ -17,6 +17,7 @@
     
         <% bugs.forEach(bug => { %>
             
+            <% if(bug.priority == 'low'){ %>
                 <div class="card border-dark mb-3" style="max-width: 18rem;">
                     <div class="card-header"><%= bug.title %></div>
                     <div class="card-body text-dark">
@@ -24,6 +25,25 @@
                       <p class="card-text"><%= bug.description %></p>
                     </div>
                   </div>
+                <%}%>
+                <% if(bug.priority == 'medium'){ %>
+                    <div class="card border-warning mb-3" style="max-width: 18rem;">
+                        <div class="card-header"><%= bug.title %></div>
+                        <div class="card-body text-dark">
+                          <h5 class="card-title"><%= bug.status %></h5>
+                          <p class="card-text"><%= bug.description %></p>
+                        </div>
+                      </div>
+                    <%}%>
+                    <% if(bug.priority == 'high'){ %>
+                        <div class="card border-danger mb-3" style="max-width: 18rem;">
+                            <div class="card-header"><%= bug.title %></div>
+                            <div class="card-body text-dark">
+                              <h5 class="card-title"><%= bug.status %></h5>
+                              <p class="card-text"><%= bug.description %></p>
+                            </div>
+                          </div>
+                        <%}%>
                 
             
             <% })%>

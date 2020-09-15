@@ -1,5 +1,10 @@
+<div align="center">
+  <div class="col-8">
+
 <div class="container" style="margin-top: 10%; ">
-  <a class="btn btn-primary" href="/bugs/new">  إضافة تقرير</a> <br><br>
+  <div style="text-align: left;">
+  <a class="btn btn-primary" href="/bugs/new">  إضافة تقرير</a>
+</div> <br><br>
   <a class="btn btn-outline-primary" href="/bugs/open">التقارير الغير مسندة</a> 
   <a class="btn btn-outline-primary" href="/bugs/closed">التقارير المغلقة</a>
   <a class="btn btn-outline-primary" href="/bugs/assigned">التقارير الموكلة</a>
@@ -9,7 +14,6 @@
         <thead>
           <tr>
             <th scope="col-sm">العنوان</th>
-            <th scope="col-sm">الوصف</th>
             <th scope="col-sm">الأولوية</th>
             <th scope="col-sm">الحالة</th>
             <th scope="col-sm">الإجراءات</th>
@@ -19,7 +23,6 @@
             <% bugs.forEach(bug=>{ %>
           <tr>
             <td><%=bug.title%></td>
-            <td><%=bug.description%></td>
             <td><%=bug.priority%></td>
             <td><%=bug.status%></td>
             <td class="text-center">
@@ -34,5 +37,6 @@
       </table>
     
       
-    
+    </div>
+    </div>
     </div>
