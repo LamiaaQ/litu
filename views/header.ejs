@@ -1,30 +1,73 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="direction: rtl;">
-    <a class="navbar-brand" href="#">LITU</a>
-    
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/home"> الرئيسية</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/users/show">المستخدمين</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/bugs">التقارير</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/bugs/search">البحث</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<div class="container">
+  <div class="row">
 
-  <div class ="container" align="left">
-        <%if(loggedIn){%>
-        <p>
-          <a href="/users/logout" style="color: black;" ><%=currentUser.name%> :مرحبا </a>
-        </p>
-        <%}else{%>
-          <a href="/users/login">تسجيل الدخول</a>
-        <%}%>
+    <div class="col-sm" style="margin-top:15px;">
+      <%if(loggedIn){%>
+      <p>
+        <a href="/users/logout" class="btn btn-outline-dark"  >تسجيل الخروج  </a>
+        <a href="/users/show" class="btn btn-outline-dark"  ><%=currentUser.name%> :مرحبا </a>
+        
+      </p>
+      <%}else{%>
+        <a href="/users/login" class="btn btn-outline-dark">تسجيل الدخول</a>
+      <%}%>
+  </div>
+    <div class="col-sm"> 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="direction: rtl;">
+          <a class="navbar-brand" href="#">/LITU/</a>
+            <%if(currentUser){%>
+                    <%if(currentUser.isDev){%>
+                      
+                      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                          <li class="nav-item active">
+                            <a class="nav-link" href="/home"> الرئيسية</a>
+                          </li>
+                          <li class="nav-item active">
+                            <a class="nav-link" href="/users/show">الملف الشخصي</a>
+                          </li>
+                          <li class="nav-item active">
+                            <a class="nav-link" href="/bugs/new">إنشاء تقرير</a>
+                          </li>
+                          <li class="nav-item active">
+                            <a class="nav-link" href="/bugs">التقارير</a>
+                          </li>
+                          <li class="nav-item active">
+                            <a class="nav-link" href="/bugs/search">البحث</a>
+                          </li>
+                        </ul>
+                      </div>
+            
+
+                  <% }else{ %>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                      <ul class="navbar-nav">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/home"> الرئيسية</a>
+                        </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/users/show">الملف الشخصي</a>
+                        </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/bugs/new">إنشاء تقرير</a>
+                        </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/bugs/search">البحث</a>
+                        </li>
+                      </ul>
+                    </div>
+                 <%}}else{%>
+
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/home"> الرئيسية</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <%}%>
+          </nav>
+
+        </div>
     </div>
+</div>
