@@ -1,36 +1,37 @@
 <form action="/users/create" method="post">
 
+  <div style="text-align: right;">
     <div class="form-group">
-        <label>name: </label>
-        <input type="text" class="form-control" name="name" placeholder="insert your name">
+        <label>الإسم </label>
+        <input type="text" class="form-control" name="name" placeholder="أدخل إسمك">
       </div>
 
       <div class="form-group">
-        <label>Date of Birth</label>
+        <label>تاريخ الميلاد </label>
         <input type="date" class="form-control" name="DOB">
       </div>
 
       <div class="form-group">
-        <label>email</label>
+        <label>البريد الإلكتروني </label>
         <input type="email" class="form-control" name="email">
       </div>
 
       <div class="form-group">
-        <label>password</label>
+        <label>كلمة المرور </label>
         <input type="password" class="form-control" name="password">
       </div>
 
       <div class="form-group">
-        <label>القسم:</label>
-        <input type="text" class="form-control" name="department">
+        <label>القسم</label>
+        <input type="text" class="form-control" placeholder="أدخل القسم التابع له" name="department">
       </div>
 
-      <label>الجنس:</label>
+      <label>الجنس</label>
       <select class="form-control" name="gender">
         <option value="true">أنثى</option>
         <option value="false">ذكر</option>
       </select> <br>
-      
-      <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      <button type="submit" class="btn btn-primary">تسجيل</button>
 
 </form>
