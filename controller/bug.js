@@ -35,6 +35,7 @@ module.exports={
             issuedUserId:mongoose.Types.ObjectId(req.user._id),
             programId:mongoose.Types.ObjectId(req.body.project)
         }).save()
+        req.flash('success','تم حفظ المشكلة')
         res.locals.redirect = '/bugs';
         next();
         
@@ -105,6 +106,17 @@ module.exports={
             console.log('Error Occured In closing a bug:'+error);
         })
     },
+    // showfilteredBugs: (req,res,next)=>{
+    //     Bug.find({status:req.params.status}).then((bugs)=>{
+
+    //         res.locals.bugs = bugs;
+    //          next();
+
+    //     }).catch((error)=>{
+
+    //         console.log(error);
+    //     })
+    // },
 
     searchForm:(req,res)=>{
             res.render('bugs/search');
