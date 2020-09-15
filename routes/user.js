@@ -7,7 +7,7 @@ router.get('/',UserController.restrictDev,UserController.index,UserController.in
 
 /* insert user */
 router.get('/new',UserController.new);
-router.post('/create',[body('name').isLength({min:2,max:25})],UserController.validator,UserController.create,UserController.redirectView);
+router.post('/create',[body('name').isLength({min:2,max:25}),body('password').isLength({min:6}),body('department').notEmpty()],UserController.validator,UserController.create,UserController.redirectView);
 
 /* login */
 router.get('/login', UserController.login);
@@ -21,7 +21,9 @@ router.get('/show',UserController.profile);
 
 /* updating user info */
 router.get('/:id/edit',UserController.edit);
-router.put('/:id/update',UserController.inputValidation,UserController.validator,UserController.update,UserController.redirectView);
+router.put('/:id/update',[body('name').isLength({min:2,max:25})
+,body('email').isEmail()
+],UserController.validator,UserController.update,UserController.redirectView);
 
 /* deleting user */
 router.delete('/:id/delete',UserController.delete,UserController.redirectView)

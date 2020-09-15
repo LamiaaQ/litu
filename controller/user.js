@@ -87,7 +87,6 @@ module.exports={
     },
 
     delete: (req,res,next)=>{
-        //console.log('delete Method');
         User.deleteOne({_id: req.params.id},function(err){
             if (err){ 
                 console.log(err) 
@@ -138,7 +137,9 @@ module.exports={
     validator:(req,res,next)=>{
         
         const error= validationResult(req)
-        if(!error.isEmpty()){           
+        if(!error.isEmpty()){  
+            req.flash('error','الرجاء إدخال بيانات صحيحة')   
+             res.redirect('back');      
              res.json({error:error.array()})     
         }else{
             next();
