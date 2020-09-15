@@ -16,6 +16,9 @@ router.post('/login', UserController.authenticate);
 /* logout */
 router.get('/logout', UserController.logout,UserController.redirectView);
 
+/* show logged in user info */
+router.get('/show',UserController.profile);
+
 /* updating user info */
 router.get('/:id/edit',UserController.edit);
 router.put('/:id/update',UserController.inputValidation,UserController.validator,UserController.update,UserController.redirectView);

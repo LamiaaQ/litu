@@ -35,7 +35,7 @@ module.exports={
     
             if(user){
                 req.flash('success', 'تم حفظ البيانات بنجاح');
-                res.locals.redirect = '/users'; 
+                res.locals.redirect = '/users'; // res.redner('users/show') -> show will print all session user info
             }else{
                 console.log(error)
                 req.flash('error', `الرجاء التحقق من البيانات`);
@@ -50,9 +50,12 @@ module.exports={
     authenticate: passport.authenticate('local',{
         failureRedirect: '/users/login',
         failureFlash: 'الرجاء التحقق من بيانات الدخول',
-        successRedirect: '/users',
+        successRedirect: '/users/show',
         successFlash: 'تم تسجيل الدخول بنجاح'
     }),
+    profile:(req,res)=>{
+        res.render('users/show');
+    },
 
     edit:(req,res)=>{
         User.findById({_id:req.params.id}).then(user=>{

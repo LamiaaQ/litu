@@ -26,7 +26,7 @@ router.get('/:id/assign',BugController.assignBug,BugController.redirectView);
 router.get('/search',BugController.search);
 router.post('/search',BugController.search);
 
-/* filter bugs*/
+/* filter bugs*/ //why order matters??
 router.get('/:status',UserController.restrictDev,BugController.showfilteredBugs,BugController.indexView);
 
 /* deleting bug */

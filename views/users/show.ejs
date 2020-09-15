@@ -1,0 +1,11 @@
+<div class ="container" align="left">
+    <%if(loggedIn){%>
+    <p>
+        <%=currentUser.name%>
+        <%=currentUser.DOB%>
+        <%=currentUser.email%>
+    </p>
+    <%}else{%>
+      sign in firt to see your profile
+    <%}%>
+</div>

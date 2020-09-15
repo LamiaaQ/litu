@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const Bug = require('../model/bug');
-// const program = require('./program');
-// const user = require('./user');
 
 module.exports={
     index: (req,res,next)=>{
@@ -36,7 +34,9 @@ module.exports={
             programId:mongoose.Types.ObjectId(req.body.project)
         }).save()
         req.flash('success','تم حفظ المشكلة')
+        if(req.user.isDev){
         res.locals.redirect = '/bugs';
+        }else {res.locals.redirect = '/bugs/new'}
         next();
         
     },
