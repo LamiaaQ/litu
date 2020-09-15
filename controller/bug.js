@@ -117,6 +117,16 @@ module.exports={
             console.log(error);
         })
     },
+    assignedToMe: (req,res,next)=>{
+        Bug.find({devId:req.user._id}).then((bugs)=>{
+            res.locals.bugs = bugs;
+             next();
+
+        }).catch((error)=>{
+            console.log(error);
+        })
+    },
+
 
     searchForm:(req,res)=>{
             res.render('bugs/search');

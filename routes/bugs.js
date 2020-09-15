@@ -29,6 +29,10 @@ router.post('/search',BugController.search);
 /* filter bugs*/ //why order matters??
 router.get('/:status',UserController.restrictDev,BugController.showfilteredBugs,BugController.indexView);
 
+/* search for bug assigned to the dev*/
+router.get('/assigned',UserController.restrictDev,BugController.assignedToMe,BugController.indexView);
+
+
 /* deleting bug */
 router.delete('/:id/delete',BugController.delete,BugController.redirectView);
 
