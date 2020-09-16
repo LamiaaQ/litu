@@ -46,6 +46,7 @@ module.exports={
             description: req.body.description
         }).then(
             ()=>{
+              req.flash('success','تم تحديث المشروع بنجاح')
               res.locals.redirect = '/programs';
               next();  
             }
