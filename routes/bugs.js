@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { body } = require('express-validator');
 const BugController = require('../controller/bug');
 const UserController = require('../controller/user');
 const ProgramController = require('../controller/program');
@@ -8,7 +9,7 @@ router.get('/',UserController.restrictDev,BugController.index,BugController.inde
 
 /* insert bug */
 router.get('/new',UserController.isAuth,ProgramController.index,BugController.new);
-router.post('/create',UserController.isAuth,BugController.create,BugController.redirectView);
+router.post('/create',UserController.isAuth,[body('title').notEmpty(),body('description').notEmpty()],UserController.validator, BugController.create,BugController.redirectView);
 
 /* updating bug info */
 router.get('/:id/edit',BugController.edit);
